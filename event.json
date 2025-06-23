@@ -1,9 +1,15 @@
 [
   {
+    "title": "Hari Lahir Pancasila",
+    "start": "2025-06-01",
+    "color": "#dc3545",
+    "description": "Hari libur nasional Indonesia untuk memperingati lahirnya Pancasila."
+  },
+  {
     "title": "Turnamen ML",
     "start": "2025-06-11",
     "color": "#28a745",
     "url": "https://example.com/turnamen-ml",
-    "description": "Turnamen Mobile Legends tingkat nasional, pendaftaran dibuka hingga 5 Juni."
+    "description": "Turnamen Mobile Legends tingkat nasional. Daftar sebelum 5 Juni!"
   }
 ]
