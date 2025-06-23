@@ -3,26 +3,41 @@
   <head>
     <meta charset="utf-8" />
     <title>Kalender Turnamen</title>
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+
     <style>
-      body { font-family: Arial, sans-serif; padding: 40px; }
-      #calendar { max-width: 900px; margin: auto; }
+      body {
+        font-family: Arial, sans-serif;
+        padding: 40px;
+      }
+
+      #calendar {
+        max-width: 900px;
+        margin: auto;
+      }
+
+      h1 {
+        text-align: center;
+      }
     </style>
   </head>
   <body>
-    <h1 style="text-align:center;">Jadwal Turnamen</h1>
+    <h1>Jadwal Turnamen</h1>
     <div id="calendar"></div>
 
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+    <!-- Init script -->
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        var calendarEl = document.getElementById('calendar');
-
-        var calendar = new FullCalendar.Calendar(calendarEl, {
+        const calendarEl = document.getElementById('calendar');
+        const calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
-          events: 'event.json' // ambil dari file JSON
+          events: 'event.json' // Pastikan file ini ada dan valid
         });
-
         calendar.render();
       });
     </script>
