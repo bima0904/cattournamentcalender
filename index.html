@@ -65,7 +65,7 @@
     </footer>
   </div>
 
-  <!-- FullCalendar + Bootstrap Bundle -->
+  <!-- FullCalendar -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -93,7 +93,16 @@
             center: 'title',
             right: 'dayGridMonth,listMonth'
           },
-          events: allEvents
+          events: allEvents,
+          eventClick: function(info) {
+            info.jsEvent.preventDefault(); // prevent browser navigation
+            if (info.event.extendedProps.description) {
+              alert(`${info.event.title}\n\n${info.event.extendedProps.description}`);
+            }
+            if (info.event.url) {
+              window.open(info.event.url, '_blank');
+            }
+          }
         });
 
         calendar.render();
