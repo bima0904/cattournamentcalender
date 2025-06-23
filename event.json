@@ -1,12 +1,9 @@
 [
   {
-    "title": "Turnamen PUBG",
-    "start": "2025-06-10",
-    "color": "#007bff"
-  },
-  {
     "title": "Turnamen ML",
     "start": "2025-06-11",
-    "color": "#28a745"
+    "color": "#28a745",
+    "url": "https://example.com/turnamen-ml",
+    "description": "Turnamen Mobile Legends tingkat nasional, pendaftaran dibuka hingga 5 Juni."
   }
 ]
