@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +11,7 @@
     rel="stylesheet"
   />
 
-  <!-- FullCalendar CSS -->
+  <!-- FullCalendar CSS (Bootstrap theme) -->
   <link
     href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css"
     rel="stylesheet"
@@ -20,23 +20,36 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 40px;
       background-color: #f8f9fa;
+      padding: 20px;
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 30px;
+      font-size: 1.75rem;
+      margin-bottom: 20px;
       font-weight: bold;
     }
 
     #calendar {
-      max-width: 900px;
-      margin: 0 auto;
-      background: white;
-      padding: 20px;
+      background-color: white;
+      padding: 10px;
       border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    @media (min-width: 768px) {
+      #calendar {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
@@ -45,21 +58,28 @@
   <h1>Jadwal Turnamen</h1>
   <div id="calendar"></div>
 
-  <!-- FullCalendar with Bootstrap Theme Support -->
+  <!-- FullCalendar JS (uses global namespace) -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const calendarEl = document.getElementById('calendar');
+
       const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
-        themeSystem: 'bootstrap', // 👈 Aktifkan Bootstrap theme
-        events: 'event.json',     // 👈 Ambil event dari file JSON
+        themeSystem: 'bootstrap',
+        height: 'auto',
+        events: 'event.json',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,listWeek'
+        },
+        eventDisplay: 'block',
       });
 
       calendar.render();
     });
   </script>
-
 </body>
 </html>
