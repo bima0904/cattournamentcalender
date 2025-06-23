@@ -1,15 +1,12 @@
 [
   {
-    "title": "Turnamen PUBG Nasional",
-    "start": "2025-07-10",
-    "end": "2025-07-12"
+    "title": "Turnamen PUBG",
+    "start": "2025-06-10",
+    "color": "#007bff"
   },
   {
-    "title": "Final Mobile Legends",
-    "start": "2025-07-15"
-  },
-  {
-    "title": "Technical Meeting FF",
-    "start": "2025-07-09"
+    "title": "Turnamen ML",
+    "start": "2025-06-11",
+    "color": "#28a745"
   }
 ]
