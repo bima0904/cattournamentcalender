@@ -3,25 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jadwal Turnamen</title>
+  <title>Jadwal Turnamen & Hari Libur</title>
+
+  <!-- Bootstrap & FullCalendar CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+
   <style>
     body {
       background: #f5f5f5;
       color: #000;
     }
+
     .fc-event-title,
     .fc-event-time {
       font-size: 0.9em;
     }
+
     .fc-event {
       cursor: pointer;
     }
+
     .holiday-event {
-      background-color: #dc3545 !important;
-      border: none;
+      background-color: rgba(220, 53, 69, 0.2) !important;
+      border: none !important;
     }
+
+    .tournament-event {
+      background-color: rgba(0, 123, 255, 0.2) !important;
+      border: 1px solid #007bff;
+    }
+
     .filter-container {
       margin-bottom: 10px;
     }
@@ -29,8 +41,8 @@
 </head>
 <body>
   <div class="container py-4">
-    <h2 class="text-center mb-4">Jadwal Turnamen</h2>
-    
+    <h2 class="text-center mb-4">Jadwal Turnamen & Hari Libur</h2>
+
     <div class="filter-container text-center mb-3">
       <label for="eventFilter" class="me-2">Filter:</label>
       <select id="eventFilter" class="form-select w-auto d-inline-block">
@@ -43,38 +55,14 @@
     <div id="calendar"></div>
   </div>
 
+  <!-- Bootstrap & FullCalendar JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
   <script>
-    const allEvents = [
-      {
-        title: "Turnamen ML",
-        start: "2025-06-11",
-        description: "Turnamen Mobile Legends tingkat nasional",
-        color: "#28a745",
-        type: "tournament",
-        url: "https://example.com/ml"
-      },
-      {
-        title: "Hari Lahir Pancasila",
-        start: "2025-06-01",
-        description: "Hari libur nasional Indonesia",
-        classNames: ["holiday-event"],
-        type: "holiday"
-      }
-    ];
-
-    // Ambil hari libur internasional dari Google Calendar (tidak dijamin selalu berhasil tanpa API key)
-    const holidaySource = {
-      googleCalendarId: 'en.indonesian#holiday@group.v.calendar.google.com',
-      className: 'holiday-event',
-      display: 'background',
-      type: 'holiday'
-    };
-
     document.addEventListener("DOMContentLoaded", function () {
       const calendarEl = document.getElementById("calendar");
+
       const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: "dayGridMonth",
         headerToolbar: {
@@ -82,9 +70,9 @@
           center: "title",
           right: "dayGridMonth,listMonth"
         },
-        events: allEvents,
+        events: [],
         eventDidMount: function(info) {
-          // Menampilkan deskripsi di tampilan grid
+          // Tooltip
           if (info.event.extendedProps.description) {
             const tooltip = document.createElement("div");
             tooltip.innerText = info.event.extendedProps.description;
@@ -92,6 +80,13 @@
             tooltip.style.marginTop = "4px";
             tooltip.style.color = "#555";
             info.el.appendChild(tooltip);
+          }
+
+          // Styling
+          if (info.event.extendedProps.type === "holiday") {
+            info.el.classList.add("holiday-event");
+          } else if (info.event.extendedProps.type === "tournament") {
+            info.el.classList.add("tournament-event");
           }
         },
         eventClick: function(info) {
@@ -104,11 +99,35 @@
 
       calendar.render();
 
-      // Filter logic
+      let allEvents = [];
+
+      // Ambil event turnamen dari file lokal
+      const fetchTournaments = fetch("event.json").then(res => res.json());
+
+      // Ambil hari libur nasional Indonesia dari Nager API
+      const fetchHolidays = fetch("https://date.nager.at/api/v3/publicholidays/2025/ID")
+        .then(res => res.json())
+        .then(data => data.map(item => ({
+          title: item.localName,
+          start: item.date,
+          type: "holiday"
+        })));
+
+      // Gabungkan dan masukkan ke kalender
+      Promise.all([fetchTournaments, fetchHolidays])
+        .then(([tournaments, holidays]) => {
+          allEvents = [...tournaments, ...holidays];
+          calendar.addEventSource(allEvents);
+        })
+        .catch(err => {
+          console.error("Gagal mengambil data:", err);
+        });
+
+      // Filter event
       document.getElementById("eventFilter").addEventListener("change", function (e) {
         const selected = e.target.value;
-        const filteredEvents = selected === "all" 
-          ? allEvents 
+        const filteredEvents = selected === "all"
+          ? allEvents
           : allEvents.filter(evt => evt.type === selected);
 
         calendar.removeAllEvents();
