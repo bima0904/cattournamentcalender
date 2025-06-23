@@ -1,15 +1,56 @@
 [
   {
-    "title": "Hari Lahir Pancasila",
-    "start": "2025-06-01",
-    "color": "#dc3545",
-    "description": "Hari libur nasional Indonesia untuk memperingati lahirnya Pancasila."
+    "namaTurnamen": "RRQ CUP BATTLEGROUND MOBILE LEGENDS",
+    "linkPendaftaran": "https://bit.ly/rrqcupbattleground_v2",
+    "lokasi": "Online",
+    "batasRegistrasi": "15 Juni 2025",
+    "biaya": "FREE",
+    "catatan": "",
+    "start": "2025-06-17"
   },
   {
-    "title": "Turnamen ML",
-    "start": "2025-06-11",
-    "color": "#28a745",
-    "url": "https://example.com/turnamen-ml",
-    "description": "Turnamen Mobile Legends tingkat nasional. Daftar sebelum 5 Juni!"
+    "namaTurnamen": "UECS Weekly Edition",
+    "linkPendaftaran": "Daftar",
+    "lokasi": "Online",
+    "batasRegistrasi": "18 Juni 2025",
+    "biaya": "FREE",
+    "catatan": "Rules: https://bit.ly/Rules_UECS_Weekly-MLBB",
+    "start": "2025-06-20"
+  },
+  {
+    "namaTurnamen": "Tangkas E-Sports 2025",
+    "linkPendaftaran": "https://bit.ly/RegistrasiTangkasE-Sport2025",
+    "lokasi": "Online",
+    "batasRegistrasi": "22 Juni 2025",
+    "biaya": "FREE",
+    "catatan": "Bersedia terdaftar sebagai peserta asuransi Pandai+ yang berlaku selama 3 bulan.\n\nSyarat dan ketentuan turnamen dapat dilihat di link berikut:\nMobile Legends: https://bit.ly/BookletTangkasESport-MobileLegends",
+    "start": "2025-06-21"
+  },
+  {
+    "namaTurnamen": "Seleksi kota Palembang untuk Porprov XV Sumsel 2025 divisi MLBB",
+    "linkPendaftaran": "https://forms.gle/g1FNsLBvaTdSb9gXA",
+    "lokasi": "Offline",
+    "batasRegistrasi": "Tidak Ada Keterangan",
+    "biaya": "Berbayar",
+    "catatan": "Follow Ig / Yt Esi Plg & join grub fb esi plg\n\nPersyaratan:\n- Usia minimal 15 tahun - 22 tahun\n- Wajib berdomisili dan KTP kota Palembang",
+    "start": "2025-06-28"
+  },
+  {
+    "namaTurnamen": "GEKRAFS E-SPORTS BATTLE MLBB COMPETITION",
+    "linkPendaftaran": "0831-4329-4993 (FEBRI)\n0812-7231-3575 (SHEFA)",
+    "lokasi": "Offline",
+    "batasRegistrasi": "2 Juli 2025",
+    "biaya": "FREE",
+    "catatan": "TBA",
+    "start": "2025-07-03"
+  },
+  {
+    "namaTurnamen": "PALEMBANG - DGL 2025 MLBB - AREA 1",
+    "linkPendaftaran": "https://duniagames.co.id/info/DGL-PALEMBANG/",
+    "lokasi": "Offline",
+    "batasRegistrasi": "6 Juli 2025",
+    "biaya": "Pulsa Telkomsel",
+    "catatan": "Pendaftaran berbayar, metode pembayaran menggunakan pulsa Telkomsel.\nPendaftaran hanya berlaku untuk pemain atau tim KOMUNITAS.\nPemain/tim yang aktif atau pernah aktif di liga besar seperti MPL, MDL, ataupun Liga Nasional dilarang mendaftar.\n\nRules Lengkap: https://dg.life/dglguidebook",
+    "start": "2025-07-18"
   }
 ]
